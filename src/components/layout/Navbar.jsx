@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Plane, LogOut } from 'lucide-react';
+import { Palmtree, LogOut } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
 const Navbar = () => {
@@ -21,8 +21,8 @@ const Navbar = () => {
     <nav className="bg-white shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center gap-2 text-xl font-bold text-blue-600">
-            <Plane className="w-6 h-6" />
+          <Link to="/" className="flex items-center gap-2 text-xl font-bold text-cyan-600">
+            <Palmtree className="w-6 h-6" />
             <span>Travel Companion</span>
           </Link>
           <div className="flex items-center gap-4 text-sm font-medium">
@@ -41,8 +41,8 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <Link to="/login" className="text-gray-600 hover:text-blue-600 transition-colors">Login</Link>
-                <Link to="/signup" className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 shadow-sm transition-all">
+                <Link to="/login" className="text-gray-600 hover:text-cyan-600 transition-colors">Login</Link>
+                <Link to="/signup" className="bg-cyan-600 text-white px-5 py-2 rounded-lg hover:bg-cyan-700 shadow-sm transition-all">
                   Sign Up
                 </Link>
               </>
