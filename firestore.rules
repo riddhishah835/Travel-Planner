@@ -1,0 +1,27 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Default rule: Deny all reads and writes unless explicitly allowed below.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+    
+    // User Document Rules:
+    // Allow users to perform CRUD operations on their own profile data.
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+      
+      // Strict definition for AI generated itineraries and general trip logic
+      match /trips/{tripId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+      
+      // Catch-all for other deeply nested paths within users tree
+      match /{subcollection=**} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+    }
+  }
+}
